@@ -3,13 +3,17 @@ package com.example.ct60a2411_e11_test.ui.settings;
 import android.bluetooth.BluetoothA2dp;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -46,6 +50,9 @@ public class SettingsFragment extends Fragment {
         Green,
         Gray
     }
+
+    EditText textViewWidth;
+    EditText textViewHeight;
 
     MyLanguage language = MyLanguage.getInstance(); // Singleton!!!
     Spinner spinnerLanguageSelection;
@@ -189,8 +196,6 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
-
         // Background color selection with Spinner
 
         Spinner spinnerBGColorSelection = (Spinner) root.findViewById(R.id.spinnerBGColor);
@@ -243,6 +248,55 @@ public class SettingsFragment extends Fragment {
                 //editTextTextMultiLineDisplayText.setText(textMessage);
             }
         });
+
+        // Textview width and height selections
+
+        textViewWidth = (EditText) root.findViewById(R.id.editTextTextMultiLineWidth);
+
+        // Width field management
+        textViewWidth.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int viewWidth = Integer.parseInt(textViewWidth.getText().toString()); // todo: Null check!!!
+                System.out.println(viewWidth);
+                setting.setViewWidth(viewWidth);
+            }
+        });
+
+        textViewHeight = (EditText) root.findViewById(R.id.editTextTextMultiHeight);
+
+        // Width field management
+        textViewHeight.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int viewHeight = Integer.parseInt(textViewHeight.getText().toString()); // todo: Null check!!!
+                System.out.println(viewHeight);
+                setting.setViewHeight(viewHeight);
+            }
+        });
+
+
+
 
         return root;
     }

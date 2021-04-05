@@ -187,7 +187,7 @@
         android:background="#EDEDED"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine|text"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textViewWidth"
         app:layout_constraintTop_toBottomOf="@+id/textViewFontSizeLabel" />
 
@@ -200,7 +200,7 @@
         android:background="#EDEDED"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine|text"
+        android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textViewHeight"
         app:layout_constraintTop_toBottomOf="@+id/textViewWidth" />
 
