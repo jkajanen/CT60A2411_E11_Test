@@ -12,17 +12,19 @@ public class MySetting {
     private int viewWidth;
     private int viewHeight;
     private int viewColor;
+    private boolean viewTextExists;
     private String viewText = "";
     private String viewLanguage = "";
 
 
 
     public MySetting(){
-        editable = false;
+        editable = true;
         viewFontsize = 12;
-        viewWidth = 320;
-        viewHeight = 200;
+        viewWidth = 0;
+        viewHeight = 0;
         viewColor = WHITE;
+        viewTextExists = false;
         viewText = "Still empty";
         viewLanguage = "Suomi";
     }
@@ -51,6 +53,12 @@ public class MySetting {
 
     public void setViewColor(int color) {viewColor = color;}
     public int getViewColor() { return viewColor; }
+
+    public void setViewTextExists(boolean exists) {viewTextExists = exists;}
+    public boolean getViewTextExists() { return viewTextExists; }
+
+    public void setViewText(String text) {viewText = text;}
+    public String getViewText() { return viewText; }
 
     public void setViewLanguage(String language) {viewLanguage = language;}
     public String getViewlanguage() { return viewLanguage; }

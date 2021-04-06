@@ -53,6 +53,7 @@ public class SettingsFragment extends Fragment {
 
     EditText textViewWidth;
     EditText textViewHeight;
+    EditText eView;
 
     MyLanguage language = MyLanguage.getInstance(); // Singleton!!!
     Spinner spinnerLanguageSelection;
@@ -251,9 +252,16 @@ public class SettingsFragment extends Fragment {
 
         // Textview width and height selections
 
+        // Width field management
+
         textViewWidth = (EditText) root.findViewById(R.id.editTextTextMultiLineWidth);
 
-        // Width field management
+        if (setting.getViewWidth() > 0 ) {
+            String s = String.valueOf(setting.getViewWidth());
+            textViewWidth.setText(s);
+            System.out.println("Width: " + setting.getViewWidth());
+        }
+
         textViewWidth.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -268,14 +276,21 @@ public class SettingsFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 int viewWidth = Integer.parseInt(textViewWidth.getText().toString()); // todo: Null check!!!
-                System.out.println(viewWidth);
+                System.out.println("Width: " + viewWidth);
                 setting.setViewWidth(viewWidth);
             }
         });
 
+        // Height field management
+
         textViewHeight = (EditText) root.findViewById(R.id.editTextTextMultiHeight);
 
-        // Width field management
+        if (setting.getViewHeight() > 0 ) {
+            String s = String.valueOf(setting.getViewHeight());
+            textViewHeight.setText(s);
+            System.out.println("Height: " + setting.getViewHeight());
+        }
+
         textViewHeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -295,11 +310,35 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        // Settings textview handling
 
+        //EditText eView = root.findViewById(R.id.editTextTextMultiLineDisplayText);
 
+        EditText eView = (EditText) root.findViewById(R.id.editTextTextMultiLineDisplayText);
+
+        eView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                //wText = s.toString();
+                //tView.setText(wText);
+                setting.setViewText(s.toString());
+                setting.setViewTextExists(true);
+            }
+        });
 
         return root;
     }
+
 
     // Set of help methods to manage spinners
 
